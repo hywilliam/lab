@@ -1,0 +1,13 @@
+/* 负外边距解决方案 */
+
+#container {
+    position: absolute;
+    left: 50%;
+    width: 168px;
+    height: 168px;
+    margin-left: -84px;
+    border: 5px solid black;
+    background-color: brown;
+}
+/* 这种方案使用了绝对定位+负外边距 */
+/* 没有hack，适用性极广，而且最广的浏览器支持 */

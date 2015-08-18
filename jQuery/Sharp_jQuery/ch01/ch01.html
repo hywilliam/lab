@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>牛刀小试，认识jQuery</title>
+</head>
+<style>
+    nav {
+        width: 200px;
+    }
+    li {
+        border: solid 1px;
+    }
+    .current {
+        background-color: blue;
+    }
+</style>
+<body>
+
+    <nav id="navigator">
+        <ul>
+            <li class="level1">
+                <a>动物</a>
+                <ul>
+                    <li>cat</li>
+                    <li>dog</li>
+                    <li>pig</li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a>植物</a>
+                <ul>
+                    <li>grass</li>
+                    <li>flower</li>
+                    <li>trees</li>
+                </ul>
+            </li>
+            <li class="level1">
+                <a>水果</a>
+                <ul>
+                    <li>apple</li>
+                    <li>pear</li>
+                    <li>banana</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+    <script src="../bower_components/jquery/jquery.js"></script>
+    <script src="ch01.js"></script>
+</body>
+</html>

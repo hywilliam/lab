@@ -1,0 +1,11 @@
+/* 使用自动外边距 */
+
+#container {
+    width: 168px;
+    height: 168px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: aquamarine;
+}
+/* 注意：容器必须指定宽度，被认为是最合理，最正确的方式 */
+/* 由于左右的自动外边距，可以实现自适应 */

@@ -1,0 +1,18 @@
+/* 组合使用自动外边距和文本对齐 */
+
+body {
+    text-align: center;
+}
+
+#container {
+    width: 168px;
+    height: 168px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+    border: 5px solid black;
+    background-color: aquamarine;
+}
+
+/* 两种方式的结合保证了跨浏览器的支持 */
+/* 但是仍需要写附加的左对齐规则，不甚完美 */

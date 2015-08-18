@@ -1,0 +1,17 @@
+/* 使用text-align实现居中 */
+
+body {
+    text-align: center;
+}
+
+#container {
+    width: 168px;
+    height: 168px;
+    background-color: cornflowerblue;
+}
+/*
+ 首先这是一个hack，因为text-align是文本属性，而这里却把它用在了元素定位上。这就会导致body的所有子元素都会居中显示，所以我们还需要额外的
+p{text-align: left;}
+来使文本恢复默认居左。
+另外，真正遵循标准的浏览器，并不会移动元素，而只是讲文本居中。 */
+/* 实测：chrome, FF, SF, OP不支持 */

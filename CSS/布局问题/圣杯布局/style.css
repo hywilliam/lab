@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    border: 2px solid;
+    overflow: hidden;
+}
+
+/* 第一步：通过浮动+负边距定位三列，最终nav和aside解决，但main被部分覆盖 */
+.main {
+    background-color: dodgerblue;
+    float: left;
+    width: 100%;
+}
+
+.nav {
+    background-color: coral;
+    float: left;
+    width: 190px;
+    margin-left: -100%;
+/* 第三步：为nav和aside加上相对定位，挪动到合适的位置即可 */
+    position: relative;
+    left: -200px;
+}
+
+.aside {
+    background-color: dimgrey;
+    float: right;
+    width: 250px;
+    margin-left: -250px;
+    position: relative;
+    right: -260px;
+}
+
+/* 第二步：尝试解决main的定位，给父元素添加padding,但是nav和aside却又出错 */
+.bd {
+    padding: 0 260px 0 200px;
+}
+
+/* 最终妥善解决，这就是圣杯布局 */

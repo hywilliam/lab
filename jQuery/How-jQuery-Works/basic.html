@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Deom</title>
+    <style>
+    a.test {
+        background-color: #ccc;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 页面主体 -->
+    <a href="http://www.baidu.com">Forget The Name</a>
+    <iframe src="http://www.baidu.com" frameborder="0"></iframe>
+
+    <!-- 外部脚本 -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- 内部脚本 -->
+    <script>
+    $(window).load(function() {
+        /* Act on the event */
+        console.log('win ready');
+    });
+
+    $(document).ready(function() {
+        // body...
+        $('a').click(function(event) {
+            // alert('Thanks for visiting!');
+            event.preventDefault();
+            $('a').addClass('test');
+            $(this).hide('slow', function() {
+                alert('hide!');
+                // $(this).removeClass('test');
+                $(this).show('slow', function() {
+                    $(this).removeClass('test')
+                });
+            });
+        });
+
+        console.log('dom ready');
+    });
+    </script>
+</body>
+
+</html>
