@@ -1,0 +1,287 @@
+/* index.html */
+/* 公共样式 */
+
+html {
+    min-width: 980px;
+    font-family: "Microsoft YaHei", "STHeiti", sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+}
+
+.content {
+    font-size: 12px;
+    text-indent: 2em;
+}
+
+.menu {
+    padding: 0;
+    font-size: 0;
+}
+
+.menu li {
+    display: inline-block;
+    margin-left: 28px;
+}
+
+.menu li a {
+    font: 14px "SimSun";
+}
+/* Github 图标 */
+
+.icon {
+    width: 30px;
+    height: 34px;
+    background: url(../img/icon-github.png) no-repeat center;
+}
+
+.icon .iconlink {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+/* 页面头部 */
+
+.header {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: #522a5c;
+}
+/* 页头导航部分 */
+
+.nav {
+    bottom: 5px;
+    width: 980px;
+    margin-left: -490px;
+}
+
+.nav a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+/* 导航菜单部分 */
+
+.nav .menu {
+    /* 使行内元素去除掉默认的空格符间隔 */
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.header .icon {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+/* 当页面宽度小于980px时，github图标消失 */
+
+@media screen and (max-width: 1050px) {
+    .header .icon {
+        display: none;
+    }
+}
+/* 页面 Banner 部分 */
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 525px;
+    background: url(../img/banner-bg.jpg) no-repeat center;
+    /* CSS3 背景图缩放，需要浏览器兼容 */
+
+    background-size: cover;
+}
+
+.banner-content {
+    bottom: 0;
+    width: 980px;
+    margin-left: -490px;
+}
+
+.banner-content .content {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40%;
+    padding: 10px 10px 30px;
+    color: #fff;
+    overflow: hidden;
+    /* CSS3 自上而下线性渐变，需要浏览器兼容 */
+
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#550000FF, endColorstr=#55FFFF00);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5) 75%, rgba(255, 255, 255, 0));
+}
+
+.banner-content .content h1 {
+    margin-bottom: 12px;
+    font-size: 14px;
+    float: right;
+}
+
+.banner-content .content p {
+    margin-bottom: 0;
+    line-height: 1.5;
+    clear: right;
+}
+/* 页面主体部分 */
+
+.main {
+    width: 100%;
+    background-color: #fff;
+}
+/* 主要内容区域 */
+
+.main-content {
+    padding: 10px 0 100px;
+    background-color: #eee;
+}
+/* 等高列内容区域 */
+
+.main-content .container {
+    width: 980px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.container .section {
+    width: 320px;
+    float: left;
+    /* 等高列设置的主要操作 */
+
+    padding-bottom: 10000px;
+    margin-bottom: -10000px;
+    background-color: #fff;
+}
+
+.container .first {
+    margin-right: 10px;
+}
+
+.container .third {
+    margin-left: 10px;
+}
+
+.section img {
+    width: 300px;
+    height: 180px;
+    margin: 10px;
+}
+
+.section .content {
+    padding: 5px 30px 25px;
+}
+
+.section .content p {
+    margin: 0;
+    line-height: 1.7;
+}
+/* 个人介绍区域 */
+
+.profile {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.profile img {
+    position: relative;
+    left: 50%;
+    top: -50px;
+    margin-left: -80px;
+    width: 160px;
+    /* 圆形头像，IE需要hack */
+
+    border-radius: 50%;
+}
+
+.profile h2 {
+    margin-top: 0;
+    text-align: center;
+    font: 20px "Century Gothic";
+    color: #000;
+}
+
+.profile p {
+    font-size: 14px;
+    color: #000;
+    line-height: 1.7;
+}
+/* 页脚区域 */
+
+.footer {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.bottom-nav {
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.bottom-nav .menu {
+    width: 252px;
+    margin: 0 auto;
+}
+
+.sitelinks {
+    width: 980px;
+    margin: 50px auto 50px;
+    padding: 0;
+    font-size: 0;
+    overflow: hidden;
+}
+
+.sitelinks .sitelink {
+    width: 196px;
+    display: block;
+    float: left;
+    font-size: 12px;
+}
+
+.sitelink>a {
+    font-size: 14px;
+}
+
+.sitelink ul {
+    padding: 0;
+    margin-top: 40px;
+}
+
+.sitelink ul li {
+    margin-bottom: 1em;
+}
+
+.sitelink ul a:hover {
+    text-decoration: underline;
+}
+
+.siteinfo {
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer .icon {
+    margin: 10px auto 0;
+}

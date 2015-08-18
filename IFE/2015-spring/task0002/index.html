@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>task0002</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+</head>
+<body>
+<label for="number1"><input id="number1" type="text"></label>
+<label for="number2"><input id="number2" type="text"></label>
+<span id="result"></span>
+<button id="addbtn">add</button>
+<button id="ajax">AJAX</button>
+<script>
+    //    alert('Hello World!');
+    //    console.log('Hello World!');
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    function add(num1, num2) {
+        return num1 + num2;
+    }
+
+    function renderResult(result) {
+        $('result').innerHTML = result;
+    }
+
+    function addEventHandle() {
+        var num1 = $('number1').value,
+            num2 = $('number2').value,
+            result = add(num1, num2);
+        renderResult(result);
+    }
+
+    function initEvent() {
+        $('addbtn').addEventListener('click', addEventHandle, false);
+    }
+
+    initEvent();
+</script>
+<script src="scripts/6_ajaxDemo.js"></script>
+</body>
+</html>

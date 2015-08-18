@@ -1,0 +1,224 @@
+/* -------------------reset.css: 样式重置----------------------- */
+body {
+    font-family: arial, sans serif;
+    font-size: 12px;
+}
+
+body,
+h1, h2,
+p,
+ul {
+    margin: 0;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+img {
+    border: 0;
+}
+
+/* -------------------common.css: 任何网站都能用---------------------- */
+/* single.css */
+/* percent width value */
+.pct33 {
+    width: 33.3%;
+}
+.pct100 {
+    width: 100%;
+}
+/* font-family */
+.fs {
+    font-family: Simsun;
+}
+/* font-size */
+.f14 {
+    font-size: 14px;
+}
+/* line-height */
+.lh-pct150 {
+    line-height: 150%;
+}
+.lh-pct170 {
+    line-height: 170%;
+}
+/* text-align */
+.tr {
+    text-align: right;
+}
+/* commonly color */
+.bgbl {
+    background-color: #000;
+}
+.bgwh {
+    background-color: #FFF;
+}
+.black {
+    color: #000;
+}
+.white {
+    color: #FFF;
+}
+/* margin */
+.ml0 {
+    margin-left: 0;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.mt1e {
+    margin-top: 1em;
+}
+/* padding */
+.p10 {
+    padding: 10px;
+}
+.pt10 {
+    padding-top: 10px;
+}
+.pb30 {
+    padding-bottom: 30px;
+}
+/* position */
+.rel {
+    position: relative;
+}
+.abs {
+    position: absolute;
+}
+
+/* multiply.css */
+/* 块状元素居中 */
+.auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 清除浮动 */
+.clear-fix {
+    *zoom: 1;
+}
+.clear-fix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* --------------------website common.css: 当前网站的特殊样式-------------------- */
+/* 链接无下划线 */
+a {
+    text-decoration: none;
+}
+/* 段落缩进 */
+p {
+    text-indent: 2em;
+}
+/* 本站常用width */
+.max-w980 {
+    max-width: 980px;
+}
+.min-w980 {
+    min-width: 980px;
+}
+.w980 {
+    width: 980px;
+}
+.w300 {
+    width: 300px;
+}
+/* 本站常用height */
+.h80 {
+    height: 80px;
+}
+.ble {
+    border-left: 10px solid #EEE;
+}
+.bre {
+    border-right: 10px solid #EEE;
+}
+/* 本站常用background-color */
+.bg52 {
+    background-color: #522A5C;
+}
+.bge {
+    background-color: #EEE;
+}
+
+/* --------------------widget.css: 组件样式--------------------------- */
+/* 导航 */
+.nav {
+    font-family: SimSun;
+    *zoom: 1;
+}
+.nav li {
+    float: left;
+    margin-left: 2em;
+}
+.nav li:first-child {
+    margin-left: 0;
+}
+.nav li a {
+    color: #FFF;
+}
+.nav:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* GitHub icon外链 */
+.icon {
+    display: block;
+    width: 30px;
+    height: 34px;
+    background-image: url("../img/index-icon-github.png");
+}
+
+/* --------------------singlePage detail.css: 详细页面的特殊布局样式------------------- */
+/* ----index.css---- */
+/* header */
+.header .logo {
+    left: 0;
+    bottom: 5px;
+}
+.header .nav {
+    right: 0;
+    bottom: 5px;
+}
+.header-wrap .icon {
+    right: 10px;
+    bottom: 0;
+}
+@media screen and (max-width: 1050px) {
+    .icon {
+        display: none;
+    }
+}
+
+/* banner */
+.banner {
+    height: 525px;
+    background: url('../img/index-banner-bg.jpg');
+    background-size: cover;
+}
+.banner .info-wrap {
+    margin-left: -490px;
+    left: 50%;
+    bottom: 0;
+}
+.banner .info {
+    float: right;
+    background: linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.5) 25%, rgba(255,255,255,0));
+}
+
+/* main */
+.main .section {
+    display: table-cell;
+}
+.main .content {
+    padding: 15px 20px;
+}
+/* ----blog.css---- */
+/* ----gallery.css---- */
+/* ----about.css---- */

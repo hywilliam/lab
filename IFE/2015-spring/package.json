@@ -1,0 +1,14 @@
+{
+  "name": "spring",
+  "version": "1.0.0",
+  "description": "baidu-ife 2015 spring practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hywilliam",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
+}

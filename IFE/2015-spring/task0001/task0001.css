@@ -1,0 +1,194 @@
+/* subtask02 */
+h1
+{
+    color: #5349e9;
+}
+h2
+{
+    font-size: 14px;
+}
+.subtask02 p
+{
+    font-size: 12px;
+
+    color: #ffff4b;
+    background-color: #000;
+}
+img
+{
+    border: 2px #b61e2a solid;
+}
+
+/* subtask05 */
+.subtask05 p
+{
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 700;
+    /* 字体变形 */
+    font-variant: small-caps;
+    /* 行高 */
+    line-height: 150%; /* =1.5 = font-size*1.5 */
+
+    /* 文本排版 */
+    text-align: center;
+    /* 文本修饰 */
+    text-decoration: overline;
+    /* 文本缩进 */
+    text-indent: 2em;
+    /* 单词间距，只处理英文 */
+    word-spacing: 1em;
+    /* 大小写转变，只处理英文 */
+    text-transform: capitalize;
+}
+/* CSS3字体属性，可以让设计师自己选择喜欢的字体，IE9+且IE仅支持.eot，别的现代browser支持.ttf */
+@font-face {
+    /* 使用时再调用字体即可 */
+    font-family: myFont;
+
+    src: url('');
+}
+
+/* subtask06 */
+.subtask06{
+    position: relative;
+}
+.subtask0601 {
+    width: 960px;
+    height: 480px;
+    background-color: #FE0000;
+/*    margin: auto;*/
+    position: relative;
+    left: 50%;
+    margin-left: -480px;
+}
+.subtask0602 h2 {
+    margin: 0;
+}
+.box {
+    min-width: 20em;
+    max-width: 60em;
+    background: url(images/radius_left_bottom.gif) no-repeat left bottom;
+}
+.box-outer {
+    background: url(images/radius_right_bottom.gif) no-repeat right bottom;
+    padding-bottom: 1em;
+}
+.box-inner {
+    background: url(images/radius_left_top.gif) no-repeat left top;
+}
+.box-fixer {
+    background: url(images/radius_right_top.gif) no-repeat right top;
+    padding-top: 1em;
+}
+.box h2, .box p {
+    padding: 1em;
+}
+
+/* subtask0603两列布局 */
+/* 定位实现 */
+/*
+.subtask0603 {
+    position: relative;
+}
+
+.subtask0603 .main {
+    padding-top: 10px;
+    margin-left: 220px;
+    height: 300px;
+    background-color: blue;
+}
+
+.subtask0603 .aside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}*/
+/* 圣杯实现 */
+.subtask0603 {
+    overflow: hidden;
+}
+.subtask0603 .main {
+    float: left;
+/*     margin-left: 220px; */
+    width: 100%;
+    height: 300px;
+    padding: 0 0 0 200px;
+    background-color: blue;
+}
+
+.subtask0603 .aside {
+    position: relative;
+    left: -200px;
+    float: left;
+    width: 200px;
+    height: 200px;
+    margin-left: -100%;
+    background-color: red;
+}
+
+/* subtask0604三列布局 */
+/* 圣杯实现 */
+.subtask0604 {
+    margin-top: 20px;
+    padding: 0 300px 0 150px;
+    overflow: hidden;
+}
+.subtask0604 .main {
+    float: left;
+    width: 100%;
+    height: 400px;
+    background-color: green;
+}
+.subtask0604 .sub {
+    position: relative;
+    left: -150px;
+    float: left;
+    margin-left: -100%;
+    width: 150px;
+    height: 300px;
+    background-color: red;
+}
+.subtask0604 .aside {
+    position: relative;
+    right: -300px;
+    float: left;
+    margin-left: -300px;
+    width: 300px;
+    height: 200px;
+    background-color: blue;
+}
+/* 双飞翼实现 */
+.subtask0605 {
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.subtask0605 .main-wrap {
+    float: left;
+    width: 100%;
+    height: 300px;
+    background-color: blue;
+}
+.subtask0605 .main {
+    margin: 0 200px 0 200px;
+}
+
+.subtask0605 .sub {
+    position: relative;
+    float: left;
+    margin-left: -100%;
+    width: 200px;
+    height: 280px;
+    background-color: grey;
+}
+.subtask0605 .aside {
+    float: left;
+    margin-left: -200px;
+    width: 200px;
+    height: 280px;
+    background-color: purple;
+}

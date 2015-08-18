@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <title>task0002</title>
+  </head>
+  
+  <body>
+    <input type="text" id="number1">
+    <input type="text" id="number2">
+    <span id="result"></span>
+    <button id="addbtn">ADD</button>
+    
+    <script>
+      /* id选择器$ */
+      function $(id) {
+        return document.getElementById(id);
+      }
+
+      /* 整数加运算 */
+      function add(num1, num2) {
+        return parseInt(num1) + parseInt(num2);
+      }
+
+      /* 插入结果 */
+      function renderResult(result) {
+        $('result').textContent = result;
+      }
+
+      /* 事件处理函数，即回调 */
+      function addEventHandle() {
+        var num1 = $('number1').value,
+            num2 = $('number2').value;
+        var result = add(num1, num2);
+        renderResult(result);
+      }
+
+      /* 初始化事件，增添按钮监听 */
+      function initEvent() {
+        $('addbtn').addEventListener('click', addEventHandle, false);
+      }
+
+      initEvent();
+    </script>
