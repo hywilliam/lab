@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>控制div属性</title>
+    <style>
+        div.container {
+            text-align: center;
+        }
+
+        div#show {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            background-color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="controller">
+            <input type="button" value="变高">
+            <input type="button" value="变宽">
+            <input type="button" value="变色">
+            <input type="button" value="隐藏">
+            <input type="button" value="重置">
+        </div>
+        <div id="show"></div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            //选取控制项和用于控制的div
+            var btns = document.getElementsByTagName('input'),
+                show = document.getElementById('show');
+
+            //通用改变样式函数，根据索引在属性及值中进行匹配修改
+            var changeStyle = function (index, num) {
+                var randomNum = num,
+                    baseNum = 200;
+                //要修改的div属性及值
+                var attrs = ['height', 'width', 'backgroundColor', 'display', 'display'],
+                    vals = [changeSize(randomNum), changeSize(randomNum), changeColor(randomNum), 'none', 'block'];
+
+                //通用改变宽高
+                function changeSize(num) {
+                    //位运算默认把浮点型转为整型，与0位运算并不改变值的大小
+                    return (0 | num * baseNum) + 'px';
+                }
+
+                //生成随机颜色值
+                function changeColor(num) {
+                    return '#' + ('00000' + (num * 0x1000000 | 0).toString(16)).slice(-6).toUpperCase();
+                }
+
+                show.style[attrs[index]] = vals[index];
+            };
+
+            //循环遍历控制项按钮，添加onclick方法，即循环创建button的onclick方法
+            for (var i = 0; i < btns.length; i++) {
+                //给每个控制项元素添加索引属性，以便正确获取当前索引值
+                btns[i].index = i;
+                btns[i].onclick = function () {
+                    var randomNum = Math.random();
+                    this.index === btns.length - 1 && (show.style.cssText = '');
+                    changeStyle(this.index, randomNum);
+                };
+            }
+        };
+    </script>
+</body>
+
+</html>

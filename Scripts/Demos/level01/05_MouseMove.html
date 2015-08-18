@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移入移出改变div样式</title>
+    <style>
+        #showArea {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #showArea p {
+            /* 负边距垂直定位 */
+
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            padding: 10px;
+        }
+        /*#showArea:hover {
+            border-color: cadetblue;
+            background-color: bisque;
+            color: black;
+            cursor: crosshair;
+        }*/
+
+        .firstStyle {
+            border: 10px solid black;
+            background-color: black;
+            color: azure;
+        }
+
+        .secondStyle {
+            border: 10px dotted cadetblue;
+            background-color: bisque;
+            color: black;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="showArea" class="firstStyle">
+            <p>鼠标移入改变样式，移出则恢复，分别用CSS和JavaScript实现。默认JavaScript。但是CSS的hover实现起来更方便。</p>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var showArea = document.getElementById('showArea');
+
+        showArea.onmouseover = function () {
+            this.className = 'secondStyle';
+        };
+        showArea.onmouseout = function () {
+            this.className = 'firstStyle';
+        };
+    };
+</script>
+
+</html>

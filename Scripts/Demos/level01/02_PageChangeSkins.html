@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>网页换肤</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {background-color: pink;}
+
+        li {list-style-type: none;}
+
+        a {
+            text-decoration-line: none;
+            color: white;
+        }
+
+        .container {margin-top: 30px;}
+
+        #skinController {
+            width: 150px;
+            margin: 0 auto;
+            margin-bottom: 10px
+        }
+
+        #skinController li {
+            /* 隐藏文字而且清除浮动 */
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            border: 5px;
+            border-style: solid;
+            text-indent: -99999px;
+            overflow: hidden;
+        }
+
+        /* 默认换肤按钮颜色 */
+        #skinController #red {
+            background-color: palevioletred;
+            border-color: palevioletred;
+        }
+        #skinController #green {
+            background-color: green;
+            border-color: green;
+        }
+        #skinController #black {
+            background-color: black;
+            border-color: black;
+        }
+        #skinController #yellow {
+            background-color: orange;
+            border-color: orange;
+        }
+        #skinController #blue {
+            background-color: royalblue;
+            border-color: royalblue;
+        }
+
+        #nav {
+            width: 600px;
+            margin: 0 auto;
+            background-color: palevioletred;
+        }
+
+        #nav li {
+            text-align: center;
+            line-height: 1.5;
+            width: 98px;
+            height: 23px;
+            border: 1px solid white;
+            margin-right: 0;
+            float: left;
+        }
+
+        #nav:after {
+            /* 伪类方式清除浮动 */
+            content: ".";
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        }
+    </style>
+    <!-- 初始皮肤外链 -->
+    <link rel="stylesheet" href="skins/red.css">
+</head>
+
+<body>
+    <div class="container">
+        <ul id="skinController">
+            <li id="red">红</li>
+            <li id="green">绿</li>
+            <li id="black">黑</li>
+            <li id="yellow">黄</li>
+            <li id="blue">蓝</li>
+        </ul>
+        <ul id="nav">
+            <li><a href="">新闻</a>
+            </li>
+            <li><a href="">阅读</a>
+            </li>
+            <li><a href="">游戏</a>
+            </li>
+            <li><a href="">电影</a>
+            </li>
+            <li><a href="">音乐</a>
+            </li>
+            <li><a href="">美食</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            var skinBtns = document.getElementById('skinController').getElementsByTagName('li');
+            var skinLink = document.getElementsByTagName('link')[0];
+
+            // 给换肤的控制li添加onlick
+            for (var i = 0, len = skinBtns.length; i < len; i++) {
+                skinBtns[i].onclick = function () {
+                    // 修改外链css地址
+                    skinLink['href'] = 'skins/' + this.id + '.css';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

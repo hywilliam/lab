@@ -1,0 +1,17 @@
+body {
+    background-color: burlywood;
+}
+
+a:hover {
+    color: goldenrod;
+    text-decoration-line: underline;
+}
+
+#nav {
+    background-color: orange;
+}
+
+#skinController #yellow {
+    border-color: orange;
+    background-color: white;
+}

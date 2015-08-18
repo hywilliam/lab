@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数组求和</title>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="numbers" value="1,2,3,4,5,6">
+        <label for="numbers">每个数字值用","隔开</label>
+        <button id="countBtn">求和</button>
+        <div class="reveal" id="result"></div>
+    </div>
+</body>
+<script>
+    window.onload = getSum;
+
+    function getSum() {
+        var nums = document.getElementById('numbers'),
+            count = document.getElementById('countBtn'),
+            result = document.getElementById('result');
+
+        nums.addEventListener('keyup', setNums, false);
+
+        count.addEventListener('click', calSum, false);
+
+        function setNums(e) {
+            // console.dir(e);        //  这里e是传进来的keyboardEvent
+            // console.dir(this);     //  而this使input#numbers元素。注意区别
+            //nums.setAttribute('value', this.value); // Attribute和property是有区别的
+            this.value = this.value.replace(/[^(\d)|(,)]/, ''); // 匹配非数字或逗号，用无输入替换
+        }
+
+        function calSum() {
+            var arr = nums.value.split(','),
+                sum = arr.reduce(function (x, y) {
+                    return (+x) + (+y);
+                }, 0); //原栗子中用的是for...in，其实并不好，这里用正统的数组方法来处理
+            result.textContent = sum;
+        }
+    }
+</script>
+
+</html>

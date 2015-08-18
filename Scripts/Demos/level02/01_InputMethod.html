@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>百度输入法</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            border: 1px solid blue;
+            list-style-type: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #bdInput {
+            width: 70px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        #bdInput a:hover {
+            background-color: aquamarine;
+        }
+
+        #bdInput .show {
+            width: 70px;
+            position: absolute;
+            top: 25px;
+            display: block;
+        }
+
+        #bdInput .show li {
+            width: 100%;
+            display: inline-block;
+            line-height: 24px;
+        }
+
+        #bdInput .show li a {
+            width: inherit;
+            display: block;
+            color: cadetblue;
+            text-decoration: none;
+        }
+
+        #bdInput .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bdInput">
+        <button>输入法</button>
+        <ul class="hide">
+            <li><a href="">手写</a>
+            </li>
+            <li><a href="">键盘</a>
+            </li>
+            <li><a href="">关闭</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            /* DOM元素获取 */
+            var bdInput = document.getElementById('bdInput'),
+                inputBtn = bdInput.getElementsByTagName('button')[0],
+                inputView = bdInput.getElementsByTagName('ul')[0],
+                viewClose = inputView.getElementsByTagName('li')[2].
+            getElementsByTagName('a')[0];
+
+            /* 事件监听 */
+            inputBtn.addEventListener('click', function () {
+                inputView.getAttribute('class') === 'show' ?
+                    inputView.setAttribute('class', 'hide') :
+                    inputView.setAttribute('class', 'show');
+            }, false);
+
+            viewClose.addEventListener('click', function (e) {
+                e.preventDefault(); // 阻止链接跳转的默认行为
+                if (inputView.className === 'show') {
+                    inputView.className = 'hide';
+                }
+            }, false);
+        };
+    </script>
+</body>
+
+</html>

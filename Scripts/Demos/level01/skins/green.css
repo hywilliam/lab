@@ -1,0 +1,17 @@
+body {
+    background-color: aquamarine;
+}
+
+a:hover {
+    color: green;
+    text-decoration-line: underline;
+}
+
+#nav {
+    background-color: darkcyan;
+}
+
+#skinController #green {
+    border-color: green;
+    background-color: white;
+}

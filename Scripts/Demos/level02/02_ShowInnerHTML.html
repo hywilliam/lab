@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点击DIV显示innerHTML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 1em arial, sans-serif;
+        }
+
+        a {
+            color: firebrick;
+            text-decoration-line: none;
+        }
+
+        .content {
+            width: 50%;
+            margin: 5% auto;
+        }
+
+        .article {
+            margin-bottom: 10px;
+            padding: 15px;
+            border: 3px solid orange;
+            border-radius: 5%;
+        }
+
+        .article:after {
+            content: '.';
+            visibility: hidden;
+            height: 0;
+            display: block;
+            clear: both;
+        }
+
+        .article h2 {
+            margin-left: 5%;
+        }
+
+        .article p {
+            margin: 10px auto;
+            line-height: 28px;
+            text-indent: 2em;
+        }
+
+        .article .more {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 8px;
+            float: right;
+            background-color: lightskyblue;
+        }
+
+        .article .more:hover {
+            color: blanchedalmond;
+            background-color: yellowgreen;
+        }
+
+        .article .picture {
+            width: 30%;
+            height: 180px;
+            background-image: url('http://7xihsv.com1.z0.glb.clouddn.com/520px-025Pikachu.png');
+            background-size: 100%;
+            background-color: wheat;
+            float: left;
+        }
+
+        .article .picture:hover {
+            background-image: url('http://7xihsv.com1.z0.glb.clouddn.com/520px-025Pikachu-Libre.png');
+            background-size: 100%;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="article">
+            <h2>妙蛙种子</h2>
+            <div class="picture"></div>
+            <p>妙蛙种子是一只有点像蟾蜍或蓝绿色皮肤的小恐龙的爬行动物。它有四条腿，每条腿有三个白色脚趾或爪子。它的眼睛是鲜红色，但这个神奇宝贝最显著的特点就是它背后那个洋葱状的鳞茎。这个鳞茎与神奇宝贝有着共生关系，在它出生后，它的母亲种植了一个种子在它背上。不像寄生性冬虫夏草菇类生长在<a href="">派拉斯</a>背上，最终被其进化型<a href="">派拉斯特</a>派拉斯特继承，妙蛙种子的鳞茎分享着对双方都有益的共生关系。这使得妙蛙种子能从白天得到能量的增强和提高，鳞茎能再夜间保持强劲生长。鳞茎还含有许多能吸收养分的种子。</p>
+            <hr>
+            <a href="http://wiki.52poke.com/wiki/妙蛙种子" class="more">Read More</a>
+        </div>
+        <div class="article">
+            <h2>小火龙</h2>
+            <div class="picture"></div>
+            <p>小火龙是橙色的爬行动物，像一尾的两足动物<a href="">蝾螈</a>蝾螈，有一些恐龙的特征，特别像是那些兽脚亚目食肉恐龙。小火龙有四颗小小的可见的牙齿在它的嘴巴里的上面和下面，肚子和尾巴下方是奶油色的。它最显着的特点是它的尾巴尖在出生时就有燃烧着的火焰。有人说，如果火焰熄灭这只神奇宝贝就会死亡，虽然这从来没有在动画、漫画或游戏中发生过。但有时在动画中，的确会以尾巴火焰的强弱来表示小火龙（或其进化型）身体状况的好坏。</p>
+            <hr>
+            <a href="http://wiki.52poke.com/wiki/小火龙" class="more">Read More</a>
+        </div>
+        <div class="article">
+            <h2>杰尼龟</h2>
+            <div class="picture"></div>
+            <p>杰尼龟的样子就像是乌龟，身体是蓝色的，头部很圆，可以提高杰尼龟游泳的速度。眼睛是紫色的。龟壳的背面是褐色的，里面是白色的。它的龟壳很有用，可以用于抵挡攻击。尾巴像小型的波浪。前后肢都是三趾，而且很短。</p>
+            <hr>
+            <a href="http://wiki.52poke.com/wiki/杰尼龟" class="more">Read More</a>
+        </div>
+        <div class="article">
+            <h2>皮卡丘</h2>
+            <div class="picture"></div>
+            <p>皮卡丘是一只矮矮胖胖圆乎乎的类啮齿型神奇宝贝，全身的皮毛都是黄色的。它的耳朵很长，尖端是黑色的。它有小小的嘴巴，侧面看起来像一个数字3，还有黑色的眼睛。它的脸颊上有两个红色的圆。它的前爪短而有些粗，有五个“手指”，相对地，后爪只有三个。它后背上有两条棕色的条纹。它的尾巴是像锯齿状的闪电，与身体相接的部分也有一片棕色的皮毛。尽管它确切来说是四足动物，更多时候它是站着并用两只后脚走路。</p>
+            <hr>
+            <a href="http://wiki.52poke.com/wiki/皮卡丘" class="more">Read More</a>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = showInnerHTML;
+
+    function showInnerHTML() {
+        var elts = document.getElementsByClassName('article');
+
+        for (var i = 0; i < elts.length; i++) {
+            elts[i].addEventListener('click', handle, false);
+        }
+
+        function handle() {
+            //alert(this.innerHTML);
+            alert(this.textContent); //textContent与innerHTML是有区别的哟
+        }
+    }
+</script>
+
+</html>

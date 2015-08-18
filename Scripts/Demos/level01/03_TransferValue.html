@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数传参并弹出</title>
+    <style>
+        * {
+            margin: auto;
+            padding: auto;
+        }
+
+        form {
+            /*垂直加水平居中*/
+
+            width: 168px;
+            height: 168px;
+            border: 3px solid;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -84px;
+            margin-top: -84px;
+        }
+
+        form input {
+            display: block;
+            margin-top: 20px;
+        }
+
+        #transfer {
+            margin: 30px auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <input type="text" value="Hello">
+            <input type="text" value="World">
+            <input id="transfer" type="button" value="传参">
+        </form>
+    </div>
+    <script>
+        window.onload = function () {
+
+            var tansferBtn = document.getElementById('transfer'),
+                inputs = document.getElementsByTagName('input');
+
+            var firstVal = inputs[0].value,
+                secondVal = inputs[1].value;
+
+            function alertFun() {
+                for (var i = 0, len = arguments.length; i < len; i++) {
+                    alert(arguments[i]);
+                }
+            }
+
+            tansferBtn.onclick = function () {
+                // alert(firstVal + ' ' + secondVal); // 一次弹出
+                alertFun(firstVal, secondVal); // 依次弹出
+            }
+
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>记住密码提示框</title>
+    <style>
+        .inputBox {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px dotted black;
+            background-color: bisque;
+            position: relative;
+        }
+
+        .remind {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid red;
+            background-color: aquamarine;
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+        }
+
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <div class="inputBox">
+                <input type="checkbox" name="" id="rememberPwd">
+                <label for="rememberPwd">两周内记住密码</label>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    /* 表现与内容分离的原则的话，这个出现的提示内容节点用js添加比较好，应为不算HTMl本身内容 */
+    window.onload = function () {
+        var inputNode = document.getElementsByClassName('inputBox')[0];
+
+        /* 节点创建但不显示 */
+        var remindNode = document.createElement('div');
+        remindNode.className = 'none';
+        remindNode.textContent = '为了您的信息安全，请不要在公共场所使用此功能。';
+        inputNode.appendChild(remindNode);
+
+        /* 鼠标移入移出事件 */
+        inputNode.onmouseover = function () {
+            /* 当鼠标移入显示提醒节点 */
+            remindNode.className = "remind";
+        };
+        inputNode.onmouseout = function () {
+            /* 鼠标移出时，隐藏节点 */
+            remindNode.className = 'none';
+        };
+    };
+</script>
+
+</html>

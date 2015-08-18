@@ -1,0 +1,17 @@
+body {
+    background-color: lightskyblue;
+}
+
+a:hover {
+    color: blue;
+    text-decoration-line: underline;
+}
+
+#nav {
+    background-color: dodgerblue;
+}
+
+#skinController #blue {
+    border-color: royalblue;
+    background-color: white;
+}

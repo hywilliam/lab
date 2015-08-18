@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用循环将三个div变色</title>
+    <style>
+        .controller,
+        .container {
+            width: 330px;
+            margin: 30px auto;
+            font-size: 0;
+            text-align: center;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container div {
+            /* inline-block也很好用，父元素要设置font-size：0来清除间隔 */
+
+            width: 100px;
+            height: 100px;
+            background-color: cadetblue;
+            display: inline-block;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controller">
+        <button id="ctrlBtn">点击我来变色</button>
+    </div>
+    <div class="container">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        /* 改原dome为生成随机色 */
+        var ctrlBtn = document.getElementById('ctrlBtn'),
+            showDivs = document.getElementsByClassName('container')[0]
+            .getElementsByTagName('div');
+
+        var changeColor = function () {
+            return '#' + ('00000' + (Math.random() * 0x1000000 | 0)).toString(16)
+                .slice(-6).toUpperCase();
+        };
+
+        ctrlBtn.onclick = function () {
+            for (var i = 0; i < showDivs.length; i++) {
+                showDivs[i].style['backgroundColor'] = changeColor();
+            }
+        };
+    }
+</script>
+
+</html>

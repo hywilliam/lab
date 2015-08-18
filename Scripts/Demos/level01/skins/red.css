@@ -1,0 +1,17 @@
+body {
+    background-color: pink;
+}
+
+a:hover {
+    color: red;
+    text-decoration-line: underline;
+}
+
+#nav {
+    background-color: palevioletred;
+}
+
+#skinController #red {
+    border-color: palevioletred;
+    background-color: white;
+}
