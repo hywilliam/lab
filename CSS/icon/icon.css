@@ -1,0 +1,139 @@
+div {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+.triangle-origin {
+  /* 三角形就是利用四个边框边界是斜线来形成 */
+  width: 100px;
+  height: 100px;
+  border: 100px solid;
+  border-top-color: #666;
+  border-bottom-color: #999;
+}
+
+.triangle-up {
+  /* 三角形，用border颜色的差别形成三角形 */
+  /*width: 0;*/
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #000;
+}
+
+.triangle-down {
+  border-top: 100px solid #000;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.triangle-left {
+  border-left: 100px solid #000;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+}
+
+.triangle-right {
+  border-right: 100px solid #000;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+}
+
+.triangle-top-left {
+  /*width: 0;*/
+  /*height: 0;*/
+  border-top: 100px solid #000;
+  border-right: 100px solid transparent;
+}
+
+.triangle-top-right {
+  border-top: 100px solid #000;
+  border-left: 100px solid transparent;
+}
+
+.triangle-bottom-left {
+  border-bottom: 100px solid #000;
+  border-right: 100px solid transparent;
+}
+
+.triangle-bottom-right {
+  border-bottom: 100px solid #000;
+  border-left: 100px solid transparent;
+}
+
+/* 圆与椭圆 */
+.circle {
+  border: 50px solid #000;
+  border-radius: 50%;
+}
+
+.oval {
+  width: 200px;
+  height: 100px;
+  background-color: #000;
+  border-radius: 200%;
+}
+
+/* 六角星：两个三角形叠加组成 */
+.star-six-points {
+  position: relative;
+  border-bottom: 100px solid #000;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.star-six-points:after {
+  border-top: 100px solid #000;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -50px;
+}
+
+/* 五角星：三个三角形叠加组成，需要旋转 */
+.star-five-points {
+  margin: 50px 0;
+  position: relative;
+  border-bottom: 70px solid #000;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  -webkit-transform: rotate(35deg);
+  -moz-transform: rotate(35deg);
+  -ms-transform: rotate(35deg);
+  -o-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.star-five-points:before {
+  position: absolute;
+  top: -45px;
+  left: -65px;
+  content: '';
+  display: block;
+  border-bottom: 80px solid #000;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  -webkit-transform: rotate(-35deg);
+  -moz-transform: rotate(-35deg);
+  -ms-transform: rotate(-35deg);
+  -o-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+.star-five-points:after {
+  position: absolute;
+  left: -105px;
+  top: 3px;
+  content: '';
+  display: block;
+  border-bottom: 70px solid #000;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  -webkit-transform: rotate(-70deg);
+  -moz-transform: rotate(-70deg);
+  -ms-transform: rotate(-70deg);
+  -o-transform: rotate(-70deg);
+  transform: rotate(-70deg);
+}
