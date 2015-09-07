@@ -57,7 +57,7 @@ for (var i = 1; numbersArray.push(i++) < max;);  // numbers = [1,2,3 ... 100]
  *  现在有trim的实现啦，String.trim()，移除字符串开头和结尾的空格
  */
 String.prototype.trim2 = function () {
-  return this.replace(/\s+/g, '');
+  return this.replace(/^\s+|\s+$/g, '');
 };
 
 /** 9
