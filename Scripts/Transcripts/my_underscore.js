@@ -147,7 +147,7 @@
    * --------------------------------------------------------------------------------------
    */
 
-    // 001
+    // 001 *********** 重要 ************
     // _.each(list, iteratee, [context])
     // 迭代集合中的所有元素，依次对元素在context（可选）之上进行iteratee(element, index, list)操作，如果list是一个对象，iteratee参数是
     // (value, ley, list)
@@ -404,9 +404,9 @@
 
   }
 
-  // 018
+  // 018*********** 重要 ************
   _.indexOf = createIndexFinder(1, _.findIndex, _.sortedIndex);
-  //019
+  //019*********** 重要 ************
   _.lastIndexOf = createIndexFinder(-1, _.findLastIndex);
 
   // 020
@@ -424,7 +424,7 @@
 
   };
 
-  // 001
+  // 001*********** 重要 ************
   _.bind = function (func, context) {
 
   };
@@ -444,25 +444,25 @@
 
   };
 
-  // 005
+  // 005*********** 重要 ************
   _.delay = function (func, wait) {
 
   };
 
-  // 006
+  // 006*********** 重要 ************
   _.defer = _.partial(_.delay, _, 1);
 
-  // 007
+  // 007*********** 重要 ************
   _.throttle = function (func, wait, options) {
 
   };
 
-  // 008
+  // 008*********** 重要 ************
   _.debounce = function (func, wait, immediate) {
 
   };
 
-  // 009
+  // 009*********** 重要 ************
   _.wrap = function (func, wrapper) {
 
   };
@@ -487,7 +487,7 @@
 
   };
 
-  // 014
+  // 014*********** 重要 ************
   _.once = _.partial(_.before, 2);
 
   /**
@@ -531,7 +531,7 @@
 
   };
 
-  // 008
+  // 008*********** 重要 ************
   _.extend = createAssigner(_.allKeys);
 
   // 009
@@ -560,7 +560,7 @@
 
   };
 
-  // 014
+  // 014*********** 重要 ************
   _.clone = function (obj) {
 
   };
@@ -590,7 +590,7 @@
 
   };
 
-  // 020
+  // 020*********** 重要 ************
   _.isArray = nativeIsArray || function (obj) {
 
     };
@@ -620,7 +620,7 @@
 
   };
 
-  // 026
+  // 026*********** 重要 ************
   _.isUndefined = function (obj) {
 
   };
@@ -690,11 +690,11 @@
   var createEscaper = function (map) {
 
   };
-  // 011
+  // 011*********** 重要 ************
   _.escape = createEscaper(escapeMap);
   _.unescape = createEscaper(unescapeMap);
 
-  // 012
+  // 012*********** 重要 ************
   _.result = function (object, property, fallback) {
 
   };
