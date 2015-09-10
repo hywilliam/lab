@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="../../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../../bower_components/underscore/underscore.js"></script>
+  <script src="../../bower_components/backbone/backbone.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+  (function ($) {
+
+    // 这些东西类似于构造函数，传入的参数对象放到Word的prototype中，返回的Word是一个对象。Backbone.Model ---> Surrogate ---> Word (---> word)
+    var Word = Backbone.Model.extend({
+      name: 'wyh'
+    });
+
+    var Words = Backbone.Collection.extend({
+      initialize: function (options) {
+        this.bind('add', options.view.addOneWord);
+      }
+    });
+
+    var AppView = Backbone.View.extend({
+      el        : $('body'),
+      events    : {
+        'click button#add': 'clickIn'
+      },
+      initialize: function () {
+        // 实例化，传参给initialize用
+        this.words = new Words({
+          view: this
+        });
+        this.render();
+      },
+      render    : function () {
+        $(this.el).append('<button id="add">Add One Word</button>');
+        $(this.el).append('<ul></ul>');
+      },
+      clickIn   : function () {
+        var word_name = prompt('What is your name?');
+        if (!word_name) word_name = 'null';
+        // 实例化
+        var word = new Word({
+          name: word_name
+        });
+
+        this.words.add(word);
+      },
+      addOneWord: function (model) {
+        $('ul').append('<li>' + model.get('name') + '</li>');
+      }
+    });
+
+    var appView = new AppView();
+  })(jQuery);
+</script>
+</body>
+</html>
