@@ -1,20 +1,15 @@
 /**
- * Created by hywilliam on 9/10/15.
+ * Created by hywilliam on 9/11/15.
+ * 最简单的Backbone Model对象
  */
-require.config({
-  baseUrl: 'http://localhost:8080/bower_components/',
-  paths  : {
-    '_': 'underscore/underscore'
-  }
+
+define([
+  'jquery',
+//  'ch02/2.1'
+//  'ch02/2.2'
+//  'ch02/2.3'
+//  'ch02/2.4'
+  'ch02/2.5'
+], function ($, module) {
+  $('body').append('<h1>Now is Learning ' + module.name + '</h1>')
 });
-
-require(['_'], function (_) {
-  var list = [1, 2, 2, 2, 2, 2];
-
-  _.each(list, function (item, index) {
-    ++item;
-  });
-
-  console.log(list);
-});
-
