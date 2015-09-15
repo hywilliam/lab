@@ -7,6 +7,8 @@
 define(function (require, exports) {
   exports.name = '2.5';
 
+  var $ = require('jquery');
+  var _ = require('underscore');
   var Backbone = require('backbone');
 
   var Man = Backbone.Model.extend({

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="../lib/jquery.js"></script>
+  <script src="../lib/underscore.js"></script>
+  <script src="../lib/backbone.js"></script>
+</head>
+<body>
+<a href="#actions">TestActions</a>
+<a href="#/post/120">Post 120</a>
+<script>
+  var AppRouter = Backbone.Router.extend({
+    routes      : {
+      'post/:id': 'getPost',
+      '*actions': 'defaultRoute'
+    },
+    defaultRoute: function (actions) {
+      alert(actions);
+    },
+    getPost     : function (id) {
+      alert(id);
+    }
+  });
+
+  var app_router = new AppRouter;
+
+  Backbone.history.start();
+</script>
+</body>
+</html>
