@@ -1,10 +1,14 @@
 /**
  * Created by hywilliam on 9/15/15.
+ *
+ * 按功能去写实现，然后再去优化代码，先实现
  */
 
 jQuery(function ($) {
   // behaves like $(document).ready(func..)
   // shortcut $(func...)
+
+  // 主要就四个模块，Model Collection TodoView AppView
 
   // Todo Model
   // ----------
@@ -69,10 +73,74 @@ jQuery(function ($) {
 
     tagName: 'li',
 
+    // template是个function哟
     template: _.template($('item-template').html()),
+
+    // 单个it支持的功能事件映射
+    events: {
+      'click .toggle'      : 'toggleDone',
+      'dblclick .item-view': 'edit',
+      'click a.destroy'    : 'clear',
+      'keypress .edit'     : 'updateOnEnter',
+      'blur .edit'         : 'close'
+    },
+
+    // 这个地方怎么关联起来的呢
+    initialize: function () {
+      this.listenTo(this.model, 'change', this.render);
+      this.listenTo(this.model, 'destroy', this.remove)
+    },
+
+    // 重新渲染todo item的title
+    render: function () {
+      this.$el.html(this.template(this.model.toJSON()));
+      this.$el.toggleClass('done', this.model.get('done'));
+      this.input = this.$('.edit');
+      return this;
+    },
+
+    toggleDone: function () {
+      this.model.toggle()
+    }
+  });
+
+  // App View
+  // --------
+
+  var AppView = Backbone.View.extend({
+
+    el: $('#myApp'),
+
+    statsTemplate: _.template($('#stats-template').html()),
+
+    events: {
+      'keypress #new-item'    : 'createOnEnter',
+      'click #clear-completed': 'clearCompleted',
+      'click #toggle-all'     : 'toggleAllComplete'
+    },
+
+    initialize: function () {
+
+      this.input = this.$('#new-item');
+      this.allCheckbox = this.$el.find('#toggle-all')[0];
+      this.footer = this.$('footer');
+      this.main = this.$('#main');
+
+      // 关联在此
+      this.listenTo(Todos, 'add', this.addOne);
+    },
 
     render: function () {
 
+    },
+
+    addOne: function (todo) {
+      var view = new TodoView({
+        model: todo
+      });
+      this.$('#todo-list').append(view.render().el);
     }
   });
+
+  var appView = new AppView;
 });

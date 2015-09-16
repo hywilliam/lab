@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>What is a View</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+</head>
+<body>
+
+<div id="search-container">Here</div>
+
+<!--Template-->
+
+<script type="text/template" id="search-template">
+  <!--<label for="search-input">{{= name }}</label>-->
+  <label for="search-input"><%= name %></label>
+  <input type="text" id="search-input"/>
+  <input type="button" value="Search" id="search-btn"/>
+  <!--<p><%= name %></p>-->
+  <p>{{ name }}</p>
+</script>
+
+<!--3rd-->
+<script src="../lib/jquery.js"></script>
+<script src="../lib/underscore.js"></script>
+<script src="../lib/backbone.js"></script>
+
+<script src="what_is_a_model.js"></script>
+<script src="what_is_a_view.js"></script>
+<script src="what_is_a_router.js"></script>
+</body>
+</html>
