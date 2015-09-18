@@ -21,12 +21,20 @@ var convert = function (s, numRows) {
 
   var len = s.length;
   var map = [];
+  var isUp = true;
   var censor = 0;
 
+  // 每一行是一个数组元素
   map.length = numRows;
 
   for (var j = 0; j < len; j++) {
-    map[censor++] = s.charAt(j);
+    if(isUp) {
+      map[censor++] = s.charAt(j);
+      if(censor === numRows - 1) isUp = false
+    } else {
+      map[censor--] = s.charAt(j);
+      if(censor === -1) isUp = true
+    }
   }
 };
 
