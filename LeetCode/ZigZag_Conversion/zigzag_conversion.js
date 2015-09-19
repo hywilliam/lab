@@ -19,24 +19,35 @@
  */
 var convert = function (s, numRows) {
 
-  var len = s.length;
+  // 之字形路线构成图的每一行是map中的一个元素
   var map = [];
+  // 检测指针censor是上行还是下行
   var isUp = true;
+  // 之字形路线行走的指针
   var censor = 0;
 
-  // 每一行是一个数组元素
-  map.length = numRows;
+  for (var i = 0; i < numRows; i++) {
+    map[i] = ''
+  }
 
-  for (var j = 0; j < len; j++) {
-    if(isUp) {
-      map[censor++] = s.charAt(j);
-      if(censor === numRows - 1) isUp = false
+  for (var j = 0, len = s.length; j < len; j++) {
+    if (isUp) {
+      map[censor++] += s.charAt(j);
+      if (censor === numRows) {
+        censor = censor - 2;
+        isUp = false
+      }
     } else {
-      map[censor--] = s.charAt(j);
-      if(censor === -1) isUp = true
+      map[censor--] += s.charAt(j);
+      if (censor === -1) {
+        censor = censor + 2;
+        isUp = true
+      }
     }
   }
+ 
+  return map.join()
 };
 
-var test = convert('ABCDEFGHIJKLMNOPQ', 4);
+var test = convert('ABCDEFGHIJKLMNOPQ', 3);
 console.log(test);
