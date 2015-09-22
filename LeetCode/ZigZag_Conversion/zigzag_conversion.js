@@ -6,18 +6,17 @@
  * difficult: easy
  */
 
-// TEST
-// ----
-
-// convert("PAYPALISHIRING", 3)
-// PAHNAPLSIIGYIR
-
 /**
  * @param {string} s
  * @param {number} numRows
  * @return {string}
  */
+
 var convert = function (s, numRows) {
+
+  if (numRows === 1) {
+    return s
+  }
 
   // 之字形路线构成图的每一行是map中的一个元素
   var map = [];
@@ -45,9 +44,8 @@ var convert = function (s, numRows) {
       }
     }
   }
- 
-  return map.join()
+
+  return map.join('')
 };
 
-var test = convert('ABCDEFGHIJKLMNOPQ', 3);
-console.log(test);
+var test = convert('AB', 1);

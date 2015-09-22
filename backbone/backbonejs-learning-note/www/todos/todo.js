@@ -32,7 +32,7 @@ jQuery(function ($) {
   // Todo Collection
   // ---------------
 
-  var TodoList = Backbone.Collection.extend({
+  var TodoCollection = Backbone.Collection.extend({
 
     model: Todo,
 
@@ -62,8 +62,8 @@ jQuery(function ($) {
 
   });
 
-  // 全局的Collection实例
-  var Todos = new TodoList;
+  // 全局的Collection实
+  var Todos = new TodoCollection;
 
   // Todo Item View
   // ---------
@@ -101,11 +101,36 @@ jQuery(function ($) {
 
     toggleDone: function () {
       this.model.toggle()
+    },
+
+    edit: function () {
+      this.$el.addClass('editing');
+
+      this.input.focus()
+    },
+
+    clear: function () {
+      this.model.destroy()
+    },
+
+    updateOnEnter: function (e) {
+      if (e.keyCode === 13) this.close()
+    },
+
+    close: function () {
+      var value = this.input.val();
+
+      if (!value) {
+        this.clear()
+      } else {
+        this.model.save({title: value});
+        this.$el.removeClass('editing')
+      }
     }
   });
 
-  // App View
-  // --------
+  // Todo App View
+  // -------------
 
   var AppView = Backbone.View.extend({
 
@@ -126,12 +151,29 @@ jQuery(function ($) {
       this.footer = this.$('footer');
       this.main = this.$('#main');
 
-      // 关联在此
       this.listenTo(Todos, 'add', this.addOne);
+      this.listenTo(Todos, 'all', this.render);
+
+      Todos.fetch();
     },
 
     render: function () {
+      var done = Todos.done().length;
+      var remaining = Todos.remaining().length;
 
+      if (Todos.length) {
+        this.main.show();
+        this.footer.show();
+        this.footer.html(this.statsTemplate({
+          done     : done,
+          remaining: remaining
+        }))
+      } else {
+        this.main.hide();
+        this.footer.hide()
+      }
+
+      this.allCheckbox.checked = !remaining
     },
 
     addOne: function (todo) {
@@ -139,8 +181,35 @@ jQuery(function ($) {
         model: todo
       });
       this.$('#todo-list').append(view.render().el);
+    },
+
+    createOnEnter: function (e) {
+      if (e.keyCode !== 13) return;
+      if (this.input.val() === '') return;
+
+      Todos.create({
+        title: this.input.val()
+      });
+
+      this.input.val('')
+    },
+
+    clearCompleted: function () {
+
+      _.invoke(Todos.done(), 'destroy');
+
+      return false
+    },
+
+    toggleAllComplete: function () {
+
+      var done = this.allCheckbox.checked;
+
+      Todos.each(function (item) {
+        item.save({done: done})
+      })
     }
   });
 
-  var appView = new AppView;
+  var App = new AppView;
 });
