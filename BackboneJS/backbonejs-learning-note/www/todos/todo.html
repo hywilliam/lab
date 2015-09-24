@@ -1,66 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-	<head>
-		<meta charset="UTF-8">
-		<title>Todo List App Base On Backbone</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List App Base On Backbone</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+</head>
 
-	<body>
+<body>
 
-		<div id="myApp">
+<div id="myApp">
 
-			<header>
-				<h1>ToDo</h1>
-				<input id="new-item" type="text" placeholder="something ready to do" />
-			</header>
+    <header>
+        <h1>ToDo</h1>
+        <input id="new-item" type="text" placeholder="something ready to do"/>
+    </header>
 
-			<section id="main">
-				<input type="checkbox" name="toggle-all" id="toggle-all" />
-				<label for="toggle-all">标记全部完成</label>
-				<ul id="todo-list"></ul>
-			</section>
+    <section id="main">
+        <input type="checkbox" name="toggle-all" id="toggle-all"/>
+        <label for="toggle-all">标记全部完成</label>
+        <ul id="todo-list"></ul>
+    </section>
 
-			<footer>
-				<input type="button" value="清除已完成项" id="clear-completed" />
+    <footer>
+        <input type="button" value="清除已完成项" id="clear-completed"/>
 
-				<div id="todo-count"></div>
-			</footer>
+        <div id="todo-count"></div>
+    </footer>
 
-			<script src="../lib/jquery.js"></script>
-			<script src="../lib/underscore.js"></script>
-			<script src="../lib/backbone.js"></script>
-			<script src="../lib/backbone.localStorage.js"></script>
+    <!--<script src="lib/jquery.js"></script>-->
+    <!--<script src="lib/underscore.js"></script>-->
+    <!--<script src="lib/backbone.js"></script>-->
+    <!--<script src="lib/backbone.localStorage.js"></script>-->
 
-			<script src="todo.js"></script>
+    <!--<script src="todo.js"></script>-->
 
-			<!--Templates-->
+    <script src="lib/require.js" data-main="main.js"></script>
 
-			<!--每一项的模板，标签里面再用<%丑的不得了-->
-			<script id="item-template" type="text/template">
-				<div class="item-view">
-					<input type="checkbox" class="toggle" <% done ? 'checked="checked"' : '' %> />
-					<label>
-						<%- title %>
-					</label>
-					<a class="destory"></a>
-				</div>
-				<input type="text" class="edit" value="<%- title %>" />
-			</script>
+    <!--Templates-->
 
-			<!--状态信息的模板，done和remaining这里是数字？underscore的模板很不好用，改进的时候要进行优化-->
-			<script id="stats-template" type="text/template">
-				<% if (done) { %>
-					<a id="clear-completed">Clear <%= done %> completed <%= done === 1 ? 'item' : 'items' %></a>
-					<% } %>
-						<div class="todo-count">
-							<b><%= remaining %></b>
-							<%= remaining === 1 ? 'item' : 'items'%>
-								left
-						</div>
-			</script>
-		</div>
-	</body>
+    <!--每一项的模板，标签里面再用<%丑的不得了-->
+    <script id="item-template" type="text/template">
+        <div class="item-view">
+            <input type="checkbox" class="toggle" <% done ? 'checked="checked"' : '' %> />
+            <label>
+                <%= title %>
+            </label>
+            <a class="destory"></a>
+        </div>
+        <input type="text" class="edit" value="<%= title %>"/>
+    </script>
+
+    <!--状态信息的模板，done和remaining这里是数字？underscore的模板很不好用，改进的时候要进行优化-->
+    <script id="stats-template" type="text/template">
+        <% if (done) { %>
+        <a id="clear-completed">Clear <%= done %> completed <%= done === 1 ? 'item' : 'items' %></a>
+        <% } %>
+        <div class="todo-count">
+            <b><%= remaining %></b>
+            <%= remaining === 1 ? 'item' : 'items'%>
+            left
+        </div>
+    </script>
+</div>
+</body>
 
 </html>

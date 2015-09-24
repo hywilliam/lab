@@ -5,9 +5,9 @@ require.config({
 //  baseUrl: 'lib',
   paths: {
     // 3rd
-    jquery    : 'lib/jquery',
-    underscore: 'lib/underscore',
-    backbone  : 'lib/backbone',
+    jquery    : 'todos/lib/jquery',
+    underscore: 'todos/lib/underscore',
+    backbone  : 'todos/lib/backbone',
     chap02: 'ch02/index'
   },
 

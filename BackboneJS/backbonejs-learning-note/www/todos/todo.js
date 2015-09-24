@@ -4,224 +4,232 @@
  * 按功能去写实现，然后再去优化代码，先实现
  */
 
-jQuery(function($) {
-	// behaves like $(document).ready(func..)
-	// shortcut $(func...)
+define(function (require) {
+    // behaves like $(document).ready(func..)
+    // shortcut $(func...)
 
-	// 主要就四个模块，Model Collection TodoView AppView
+    // 主要就四个模块，Model Collection TodoView AppView
+    'use strict';
+    var _                    = require('underscore'),
+        $                    = require('jquery'),
+        Backbone             = require('backbone'),
+        BackboneLocalStorage = require('backbone.LocalStorage');
 
-	// Todo Model
-	// ----------
+    // Collection
+    // ---------------
 
-	var Todo = Backbone.Model.extend({
+    var TodoCollection = Backbone.Collection.extend({
 
-		defaults: {
-			title: 'empty todo...',
-			order: Todos.nextOrder(),
-			done: false
-		},
+        model: Todo,
 
-		/**
-		 * 改变done属性状态，并保存到持久层，本例为localstorage，因为save默认调用sync方法
-		 */
-		toggle: function() {
-			this.save({
-				done: !this.get('done')
-			});
-		}
-	});
+        localStorage: new BackboneLocalStorage('todo-list'),
 
-	// Todo Collection
-	// ---------------
+        // 已完成的todos
+        done: function () {
+            // where 是一个filter，过滤出具有所给属性的对象，返回一个Collection 子集
+            return this.where({
+                done: true
+            });
+        },
 
-	var TodoCollection = Backbone.Collection.extend({
+        // 未完成的todos
+        remaining: function () {
+            return this.where({
+                done: false
+            });
+        },
 
-		model: Todo,
+        // 下一个model的order
+        nextOrder: function () {
+            // 我觉着这个地方用underscore的方法比较好（错误看法）
+            // 哈哈，看了源代码才清楚，这里last并不是jQuery的last方法，而是backbone对underscore方法的代理。
+            // 一样是可以传值来找末尾几个值的哟
+            return this.length ? this.last().get('order') + 1 : 1;
+        },
 
-		localStorage: new Backbone.LocalStorage('todo-list'),
+        // 内部属性：指明Collection的排序规则，新加入的item会插入到指定的位置
+        comparator: 'order'
+    });
 
-		// 已完成的todos
-		done: function() {
-			// where 是一个filter，过滤出具有所给属性的对象，返回一个Collection 子集
-			return this.where({
-				done: true
-			})
-		},
+    // 全局的Collection实
+    var Todos = new TodoCollection();
 
-		// 未完成的todos
-		remaining: function() {
-			return this.where({
-				done: false
-			})
-		},
+    // Model
+    // ----------
 
-		// 下一个model的order
-		nextOrder: function() {
-			// 我觉着这个地方用underscore的方法比较好（错误看法）
-			// 哈哈，看了源代码才清楚，这里last并不是jQuery的last方法，而是backbone对underscore方法的代理。
-			// 一样是可以传值来找末尾几个值的哟
-			return this.length ? this.last().get('order') + 1 : 1
-		},
+    var Todo = Backbone.Model.extend({
 
-		// 内部属性：指明Collection的排序规则，新加入的item会插入到指定的位置
-		comparator: 'order'
-	});
+        defaults: {
+            title: 'empty todo...',
+            order: Todos.nextOrder(),
+            done : false
+        },
 
-	// 全局的Collection实
-	var Todos = new TodoCollection;
+        /**
+         * 改变done属性状态，并保存到持久层，本例为localstorage，因为save默认调用sync方法
+         */
+        toggle: function () {
+            this.save({
+                done: !this.get('done')
+            });
+        }
+    });
 
-	// Todo Item View
-	// ---------
+    // Item View
+    // ---------
 
-	// 一个TodoView的构造函数，也就是一个item的DOM元素
-	var TodoView = Backbone.View.extend({
+    // 一个TodoView的构造函数，也就是一个item的DOM元素
+    var TodoView = Backbone.View.extend({
 
-		tagName: 'li',
+        tagName: 'li',
 
-		// template是个function哟
-		template: _.template($('item-template').html()),
+        // template是个function哟
+        template: _.template($('#item-template').html()),
 
-		// 单个it支持的功能事件映射
-		events: {
-			'click .toggle': 'toggleDone',
-			'dblclick .item-view': 'edit',
-			'click a.destroy': 'clear',
-			'keypress .edit': 'updateOnEnter',
-			'blur .edit': 'close'
-		},
+        // 单个it支持的功能事件映射
+        events: {
+            'click .toggle'      : 'toggleDone',
+            'dblclick .item-view': 'edit',
+            'click a.destroy'    : 'clear',
+            'keypress .edit'     : 'updateOnEnter',
+            'blur .edit'         : 'close'
+        },
 
-		// 这个地方怎么关联起来的呢
-		initialize: function() {
-			this.listenTo(this.model, 'change', this.render);
-			this.listenTo(this.model, 'destroy', this.remove)
-		},
+        // 这个地方怎么关联起来的呢
+        initialize: function () {
+            this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'destroy', this.remove);
+        },
 
-		// 重新渲染todo item的title
-		render: function() {
-			this.$el.html(this.template(this.model.toJSON()));
-			this.$el.toggleClass('done', this.model.get('done'));
-			this.input = this.$('.edit');
-			return this;
-		},
+        // 重新渲染todo item的title
+        render: function () {
+            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.toggleClass('done', this.model.get('done'));
+            this.input = this.$('.edit');
+            return this;
+        },
 
-		toggleDone: function() {
-			this.model.toggle()
-		},
+        toggleDone: function () {
+            this.model.toggle();
+        },
 
-		edit: function() {
-			this.$el.addClass('editing');
+        edit: function () {
+            this.$el.addClass('editing');
 
-			this.input.focus()
-		},
+            this.input.focus();
+        },
 
-		clear: function() {
-			this.model.destroy()
-		},
+        clear: function () {
+            this.model.destroy();
+        },
 
-		updateOnEnter: function(e) {
-			if (e.keyCode === 13) this.close()
-		},
+        updateOnEnter: function (e) {
+            if (e.keyCode === 13) {
+                this.close();
+            }
+        },
 
-		close: function() {
-			var value = this.input.val();
+        close: function () {
+            var value = this.input.val();
 
-			if (!value) {
-				this.clear()
-			} else {
-				this.model.save({
-					title: value
-				});
-				this.$el.removeClass('editing')
-			}
-		}
-	});
+            if (!value) {
+                this.clear();
+            } else {
+                this.model.save({
+                    title: value
+                });
+                this.$el.removeClass('editing');
+            }
+        }
+    });
 
-	// Todo App View
-	// -------------
+    // Todo App View
+    // -------------
 
-	var AppView = Backbone.View.extend({
+    var AppView = Backbone.View.extend({
 
-		el: $('#myApp'),
+        el: $('#myApp'),
 
-		statsTemplate: _.template($('#stats-template').html()),
+        statsTemplate: _.template($('#stats-template').html()),
 
-		events: {
-			'keypress #new-item': 'createOnEnter',
-			'click #clear-completed': 'clearCompleted',
-			'click #toggle-all': 'toggleAllComplete'
-		},
+        events: {
+            'keypress #new-item'    : 'createOnEnter',
+            'click #clear-completed': 'clearCompleted',
+            'click #toggle-all'     : 'toggleAllComplete'
+        },
 
-		initialize: function() {
+        initialize: function () {
 
-			this.input = this.$('#new-item');
-			this.allCheckbox = this.$el.find('#toggle-all')[0];
-			this.footer = this.$('footer');
-			this.main = this.$('#main');
+            this.input = this.$('#new-item');
+            this.allCheckbox = this.$el.find('#toggle-all')[0];
+            this.footer = this.$('footer');
+            this.main = this.$('#main');
 
-			this.listenTo(Todos, 'add', this.addOne);
-			this.listenTo(Todos, 'all', this.render);
+            this.listenTo(Todos, 'add', this.addOne);
+            this.listenTo(Todos, 'all', this.render);
 
-			Todos.fetch();
-		},
+            Todos.fetch();
+        },
 
-		render: function() {
-			var done = Todos.done().length;
-			var remaining = Todos.remaining().length;
+        render: function () {
+            var done = Todos.done().length;
+            var remaining = Todos.remaining().length;
 
-			if (Todos.length) {
-				this.main.show();
-				this.footer.show();
-				this.footer.html(this.statsTemplate({
-					done: done,
-					remaining: remaining
-				}))
-			} else {
-				this.main.hide();
-				this.footer.hide()
-			}
+            if (Todos.length) {
+                this.main.show();
+                this.footer.show();
+                this.footer.html(this.statsTemplate({
+                    done     : done,
+                    remaining: remaining
+                }));
+            } else {
+                this.main.hide();
+                this.footer.hide();
+            }
 
-			this.allCheckbox.checked = !remaining
-		},
+            this.allCheckbox.checked = !remaining;
+        },
 
-		addOne: function(todo) {
-			var view = new TodoView({
-				model: todo
-			});
-			this.$('#todo-list').append(view.render().el);
-		},
+        addOne: function (todo) {
+            var view = new TodoView({
+                model: todo
+            });
+            this.$('#todo-list').append(view.render().el);
+        },
 
-		createOnEnter: function(e) {
-			if (e.keyCode !== 13) return;
-			if (this.input.val() === '') return;
+        createOnEnter: function (e) {
+            if (e.keyCode !== 13) {
+                return;
+            }
+            if (this.input.val() === '') {
+                return;
+            }
 
-			Todos.create({
-				title: this.input.val()
-			});
+            Todos.create({
+                title: this.input.val()
+            });
 
-			this.input.val('')
-		},
+            this.input.val('');
+        },
 
-		clearCompleted: function() {
+        clearCompleted: function () {
 
-			_.invoke(Todos.done(), 'destroy');
+            _.invoke(Todos.done(), 'destroy');
 
-			return false
-		},
+            return false;
+        },
 
-		toggleAllComplete: function() {
+        toggleAllComplete: function () {
 
-			var done = this.allCheckbox.checked;
+            var done = this.allCheckbox.checked;
 
-			Todos.each(function(item) {
-				item.save({
-					done: done
-				})
-			})
-		}
-	});
+            Todos.each(function (item) {
+                item.save({
+                    done: done
+                });
+            });
+        }
+    });
 
-	var App = new AppView;
+    return AppView;
 });
-
-
-// Here test webstorm git vsc again
