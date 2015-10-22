@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="http://libs.useso.com/js/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="http://libs.useso.com/js/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="http://libs.useso.com/js/jquery/1.10.0/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+
+<body>
+  <script>
+    var Todo = Backbone.Model.extend({
+      name: 'wyh',
+      defaults: {
+        title: 'todo Model',
+        completed: false
+      },
+      initialize: function() {
+        console.log('Todo Model is initializing.')
+      }
+    });
+    var todo1 = new Todo();
+    var todo2 = new Todo({
+      title: 'check the attributes',
+      // completed: true
+    });
+    console.log(JSON.stringify(todo1));
+    console.log(JSON.stringify(todo2));
+  </script>
+</body>
+
+</html>
