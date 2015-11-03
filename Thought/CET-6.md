@@ -46,4 +46,83 @@
  - fracture
  - deviate
  - discriminate
- - 
+
+# 2015-11-03
+
+## List 02
+
+ - insect
+ - proficiency
+ - sentiment
+ - gear
+ - literacy
+ - rectify
+ - overhead
+ - frequent
+ - destiny
+ - cellar
+ - gigantic
+ - classical
+ - reclaim
+ - orientation
+ - huddle huddle huddle
+ - hasty hasty hasty
+ - cancer cancer cancer
+ - breed breed breed
+ - finance finance finance
+ - imaginative imaginative imaginative
+ - establish establish
+ - reconcile reconcile reconcile
+ - fracture fracture fracture
+ - enthusiastic enthusiastic enthusiastic
+ - priority priority priority
+ - nutrition nutrition nutrition
+ - contest contest contest
+ - deviate deviate deviate
+ - pamphlet pamphlet pamphlet
+ - discriminate discriminate discriminate
+ - rivalry ribalry rivalry
+ - competence competence competence
+ - barricade barricade barricade
+ - glamour glamour glamour
+ - nourish nourish nourish
+ - stab stab stab
+ - accumulate accumulate accumulate
+ - armor armor armor
+ - slip slip slip 
+ - enlighten enlighten enlighten
+ - idiom idiom idiom
+ - progressive progressive progressive
+ - booth booth booth
+ - appendix appendix appendix
+ - corrode corrode corrode
+ - groove groove groove
+ - owe owe owe
+ - complaint complaint complaint
+ - stability stability stability
+ - stabilize stabilize stabilize
+ - propaganda propaganda propaganda
+ - flare flare flare
+ - stable stable stable stable stable stable
+ - innumerable innumerable innumerable
+ - justify justify justify
+ - foam foam foam
+ - compose compose compose
+ - psychiatrist psychiatrist psychiatrist
+ - intellectual intellectual intellectual
+ - objection objection objection
+ - costume costume costume
+ - reaction reaction reaction
+ - presume presume presume
+ - hurricane hurricane hurricane
+ - entail entail entail
+ - referee referee referee
+ - dodge dodge dodge
+ - foremost foremost foremost
+ - stack stack stack
+ - circus circus circus
+ - disguise disguise disguise
+ - stagger stagger stagger
+ - recognize recognize recognize
+ - staircase staircase staircase
+ - embody embody embody
