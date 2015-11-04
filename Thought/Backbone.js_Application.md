@@ -49,3 +49,37 @@ URL路由，DOM事件和模型事件，都在view中触发处理逻辑。这些�
 A note on Nacigation and State
 
 传统开发中，导航需要URL的参与变化，而SPA的话，可以局部变化，而全局的导航就变成了路由。MVC中，C的角色要摆正。Backbone没有明确的C，
+
+### What does MVC give us?
+
+使UI与业务逻辑分离。便于修改和维护。
+
+# Backbone Basics
+
+Models, Views, Collections, events, routers
+
+## Getting set up
+
+### Model
+
+#### initialization
+`.initialize()`方法，粗现。
+#### Default values
+`.defaults`属性，粗现。
+#### getters & setters
+`.get()`方法,`.set()`方法,`change: `事件，粗现
+#### Direct access
+`.attributes`属性，`.hasChanged()`方法，粗现。
+用`.attributes`，没有`set()`好，因为直接访问，会越过的`change:attr`的事件触发。相当于`.set({name: 'www'}, {silent: true})`。
+#### Listening for changes to your model
+在`.initialize()`里添加对model change的监听很便利哟
+#### Validation
+`.validation()`，`.save()`,`unset()`,`validationError`粗现。
+save的时候，validation就会默认触发，或者set的时候，传`{validate: true}`。
+
+### View
+
+#### Creating new views
+`.render()` | `.tagName` | `.el`
+#### What is `el`?
+DOM的引用，每个view都必须有。可以在view里面各种操作el，然后一次性地插入到DOM中，可以更快地进行渲染，因为，渲染效率跟所需的最小重渲数有关。
