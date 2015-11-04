@@ -82,4 +82,6 @@ save的时候，validation就会默认触发，或者set的时候，传`{validat
 #### Creating new views
 `.render()` | `.tagName` | `.el`
 #### What is `el`?
-DOM的引用，每个view都必须有。可以在view里面各种操作el，然后一次性地插入到DOM中，可以更快地进行渲染，因为，渲染效率跟所需的最小重渲数有关。
+DOM的引用，每个view都必须有。可以在view里面各种操作el，然后一次性地插入到DOM中，可以更快地进行渲染，因为，渲染效率跟所需的最小重渲数有关。有两种设定view的场景：1.新增一个view（tagName,+可选的`id`, `className`）2.我要操作DOM既有的view（将el的值设为一个css选择器）。
+这里有个问题啊，`$el`，`el`区别？
+`this.$el === $(this.el)`在一个view里面，两个都有的，便于使用罢了。
