@@ -84,4 +84,34 @@ save的时候，validation就会默认触发，或者set的时候，传`{validat
 #### What is `el`?
 DOM的引用，每个view都必须有。可以在view里面各种操作el，然后一次性地插入到DOM中，可以更快地进行渲染，因为，渲染效率跟所需的最小重渲数有关。有两种设定view的场景：1.新增一个view（tagName,+可选的`id`, `className`）2.我要操作DOM既有的view（将el的值设为一个css选择器）。
 这里有个问题啊，`$el`，`el`区别？
-`this.$el === $(this.el)`在一个view里面，两个都有的，便于使用罢了。
+`view.$el === $(view.el)`在一个view里面，两个都有的，便于使用罢了。
+`view.$(selector) === $(view.el).find(selector)`。
+el属性代表当前view将要进行渲染的标记块；想要得到当前view在页面中的实际渲染，需要将它作为一个新元素添加到DOM或者添加到一个已存在的DOM中去。
+#### understanding `render()`
+`_.template()` | 
+render是定义模板渲染逻辑的可选方法。render末尾加上return this；是一个很好的模式。
+#### The events hash 
+`delegate()`事件委托用的是jquery的delegate。
+`'eventName selector': 'callbackFunction'`
+
+### Collection
+
+#### Adding and Removing Models 
+Collection相当于Model们的居所，可以通过`add(), remove()`来增减。
+#### Retrieving Models
+`Collection.get()`
+`id, cid, idAttribute`
+#### Listening for events
+`obj.on({click: action})` | `trigger()`
+#### Resetting/Refreshing Collections
+`Collection.set()` | `reset()` | `options.previousModels`
+`Collection.reset()`不给reset传参，可以彻底清空一个collection。
+set方法可以智能地增删改Collection和里面的models，而且会触发相应的add，remove，change事件。
+#### Underscore utility functions
+`forEach` | `sortBy` | `map` | `min` | `max` | `pluck` | `filter` | `any` | `indexOf` | `isEmpty` | `groupBy` | ...
+#### chainable API
+`chain()`封装对象 链式调用，以`value()`作为结尾。
+
+### RESTful Persistence
+
+#### Fetching models from the server
