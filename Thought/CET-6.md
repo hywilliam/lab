@@ -127,4 +127,47 @@
  - staircase staircase staircase
  - embody embody embody
  
-2015-11-05
+# 2015-11-05
+
+## list03
+
+ - previous previous previous
+
+# 2015-11-09
+
+## list03
+
+ - plague plague plague
+ - hierarchy
+ - radical radical radical
+ - essence 
+ - conscientious
+ - caption
+ - stalk stalk stalk
+ - morality morality morality
+ - endow endow
+ - narrative narrative narrative
+ - spice spice spice
+ - institution
+ - grim grim grim
+ - muddy muddy muddy
+ - stall stall stall
+ - prone prone prone
+ - staple staple
+ - startle
+ - relieve relieve relieve
+ - statement
+ - statesman
+ - stationary
+ - stereo
+ - stereotype
+ - stern
+ - census
+ - prospective
+ - dismiss
+ - endurance endurance endurance
+ - conserve
+ - preclude
+ - sticky sticky sticky
+ - marsh marsh
+ - patron patron
