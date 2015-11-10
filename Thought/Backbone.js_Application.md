@@ -115,3 +115,6 @@ set方法可以智能地增删改Collection和里面的models，而且会触发�
 ### RESTful Persistence
 
 #### Fetching models from the server
+`Collection.fetch()`: 通过GET请求，从服务器取回一些models，它们装在JSON数组中，访问的url是Collection的url属性。收到数据后，Collection的set方法将会执行，然后更新当前的Collection。同样的将会触发响应的事件。 
+### saving models to the server
+每个model有一个`save()`方法，当这个model是collection从服务器fetch过来
