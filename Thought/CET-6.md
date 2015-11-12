@@ -171,3 +171,57 @@
  - sticky sticky sticky
  - marsh marsh
  - patron patron
+
+# 2015-11-12
+
+## list04
+
+ - dub dub dub
+ - community community community
+ - desire desire desire
+ - bamboo bamboo bamboo
+ - dazzle dazzle dazzle
+ - outfit outfit outfit
+ - heel heel heel
+ - romance romance  romance
+ - dispatch dispatch dispatch
+ - flutter flutter flutter
+ - rash rash rash
+ - competitive competitive competitive
+ - stitch stitch stitch
+ - character character character
+ - corpse corpse corpse
+ - fiction fiction fiction
+ - straightforward
+ - compete compete compete
+ - bargain bargain bargain
+ - external external external
+ - aspiration aspiration aspiration
+ - pretension pretension pretension
+ - drawback drawback drawback
+ - toll toll toll
+ - correlate correlate correlate
+ - sip sip sip
+ - conservation conservation conservation
+ - clasp clasp clasp
+ - efficient efficient efficient
+ - invert invert invert
+ - segment segment segment
+ - drain drain drain
+ - strain strain strain
+ - entrepreneur entrpreneur
+ - assault assault assault
+ - strand strand strand
+ - concise concise concise
+ - denounce denounce denounce
+ - catholic catholic catholic
+ - streak streak streak
+ - preliminary preliminary preliminary
+ - maneuver maneuver maneuver
+ - alleviate alleviate alleviate
+ - stride stride stride
+ - apparatus apparatus apparatus
+ - deduce deduce deduce
+ - levy levy levy
+ - condemn condemn condemn
+ - 
