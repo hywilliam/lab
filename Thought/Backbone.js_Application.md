@@ -101,7 +101,7 @@ Collection相当于Model们的居所，可以通过`add(), remove()`来增减。
 #### Retrieving Models
 `Collection.get()`
 `id, cid, idAttribute`
-#### Listening for events
+#### Listening for events    
 `obj.on({click: action})` | `trigger()`
 #### Resetting/Refreshing Collections
 `Collection.set()` | `reset()` | `options.previousModels`
@@ -116,5 +116,54 @@ set方法可以智能地增删改Collection和里面的models，而且会触发�
 
 #### Fetching models from the server
 `Collection.fetch()`: 通过GET请求，从服务器取回一些models，它们装在JSON数组中，访问的url是Collection的url属性。收到数据后，Collection的set方法将会执行，然后更新当前的Collection。同样的将会触发响应的事件。 
-### saving models to the server
-每个model有一个`save()`方法，当这个model是collection从服务器fetch过来
+#### saving models to the server
+每个model有一个`save()`方法，执行 model 的 save 方法，需要考量这个model是collection从服务器fetch过来的，还是在浏览器端自行创建的，如果是前者，那么执行 save 的时候就会通过拼接 model 的 id 至 collection 的 url 从而创建一个新的 url，然后发起一个 PUT 请求至 Server；如果是浏览器后来创建的 model，由于没有 id，所以会发起一个 POST 请求。这里还有`Collection.create()`是可以一步到位创建新 model，增加到 Collection，持久化到 Server 的。
+#### Delete models from the server
+`Model.destroy()`从 Collection 中移除当前 model，发一个 DELETE 请求，`Collection.remove()`移除整个 Collection。
+#### Options
+
+### Events
+
+`Backbone.Events`混杂在其他的 Backbone 类中，包括:
+ 
+ - Backbone
+ - Backbone.Model
+ - Backbone.View
+ - Backbone.Collection
+ - Backbone.Rounter
+ - Backbone.History
+
+由于 Backbone.Events 混在在 Backbone 中，且 Backbone是一个全局变量，所以可将 Backbone 用作一个简单的事件总线。 
+
+#### on(), off(), trigger()
+
+#### listenTo(), stopListening()
+
+#### Events and Views
+在一个 View 中，有两种事件是可以被监听的，DOM 事件和通过 Event API 触发的事件。实际写的时候，有三种方式：events 里面，jquery 或 zepto 的事件监听，Backbone 的 Event API。要注意它们传回调的时候 this 的值。
+
+### Routers
+#### Backbone.history
+Backbone.history 用来处理 hashchange 事件，`Backbone.history.start()`简单地告知 Backbone 可以监听所有的 hashchange 事件了。
+`.navigate()`就是手动触发这个路由变化，但是默认的时候是改变 url 但并不触发 router 的回调，想要触发，需传 option，`{trigger: true}`。
+
+### Backbone Sync API
+我们先前讨论过 Backbone 是如何支持 RESTful 持久化数据的（Collection 的`fetch()`, `create()`; Model 的`save()`, `destroy()`）。现在我们来探讨一下这些实现的底层方法`Backbone.sync`。sync 方法通过 jquery 或 zepto 的$.ajax()来完成这些 RESTful 请求，不过可以进行重载。
+
+### Dependencies
+Backbone 重度依赖 underscore,需要有一个 DOM 操作的库，jquery或 zepto,如果要用 Backbone.sync, 而且需要老版本浏览器的 JSON 支持，json2.js是需要的。
+### Summary
+
+## Exercise1
+
+## Exercise2
+
+## Backbone Extensions
+
+## Common Ploblems & Solutions
+
+## Modular Development
+
+## Exercise3
+
+......
