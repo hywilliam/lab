@@ -153,6 +153,7 @@ Backbone.history 用来处理 hashchange 事件，`Backbone.history.start()`简�
 ### Dependencies
 Backbone 重度依赖 underscore,需要有一个 DOM 操作的库，jquery或 zepto,如果要用 Backbone.sync, 而且需要老版本浏览器的 JSON 支持，json2.js是需要的。
 ### Summary
+在本章，我们介绍了在使用 Backbone 来开发一个应用时所需的相关模块，Model, View, Collection, 和 Router。探究了混合在 Backbone 中的事件系统，通过发布者-订阅者模式加强了Backbone 中的各模块。而且，我们演示了该如何使其用于变化多样的对象中去。最后，我们了解了，Backbone 通过Underscore 和 jquery/zepto 的 API 提供了一个丰富的 DOM 操作和持久化特性。
 
 ## Exercise1
 
