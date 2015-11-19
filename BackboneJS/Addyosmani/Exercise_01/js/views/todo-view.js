@@ -36,6 +36,10 @@ app.TodoView = Backbone.View.extend({
         this.$el.toggleClass('hidden', this.isHidden());
     },
 
+    /**
+     *
+     * @returns {boolean|*}
+     */
     isHidden: function () {
         var isCompleted = this.model.get('completed');
         return (
