@@ -12,25 +12,31 @@ app.AppView = Backbone.View.extend({
 
     statsTpl: _.template($('#stats-tpl').html()),
 
+    // V ===> M
     events: {
-        'keypress .new-todo': 'addOne'
+        'keypress .new-todo': 'createItemOnEnter'
     },
 
     initialize: function () {
         this.$input = this.$('.new-todo');
 
+        // M ===> V
         this.listenTo(app.todos, 'add', this.addOne);
         this.listenTo(app.todos, 'all', this.render);
     },
 
-    /**
-     * 1.有输入内容
-     * 2.按回车
-     * @param e
-     */
-    addOne: function (e) {
+    addOne: function (todo) {
+        var view = new app.ItemView({
+            model: todo
+        });
+        this.$('.todo-list').append(view.render().el);
+    },
+
+    createItemOnEnter: function (e) {
         var content = this.$input.val().trim();
         if (e.which === ENTER_KEY && content.length) {
+
+            // emit 'add' event
             app.todos.create(this.newAttributes(content));
             this.$input.val('')
         } else {
@@ -44,14 +50,11 @@ app.AppView = Backbone.View.extend({
     newAttributes: function (input) {
         return {
             title: input,
-            completed: false
+            completed: false,
+            order: app.todos.setOrder()
         }
     },
 
-    /**
-     * 只要 Collection 上有事件发生，就会执行的页面渲染
-     * 更新两个模板视图
-     */
     render: function () {
 
     }
