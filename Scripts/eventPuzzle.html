@@ -9,9 +9,13 @@
             margin-top: 30px;
         }
 
+        p {
+            background: #70cf19;
+        }
+
         .parent {
             width: 200px;
-            height: 200px;
+            /*height: 200px;*/
             background: #099fde;
         }
 
@@ -39,16 +43,25 @@
     var C = document.getElementById('c1');
 
     P.addEventListener('click', function (e) {
-        if (e.target !== this) {
-            return false;
+//        if (e.target !== this) {
+//            return false;
+//        }
+//        alert('I am father');
+        if (e.target.tagName === 'P') {
+            alert(e.target.innerHTML);
         }
-        alert('I am father');
     }, true);
 
     C.addEventListener('click', function (e) {
         alert('I am child');
         e.stopPropagation();
     });
+
+    for (var i = 0; i < 1000; ++i) {
+        var el = document.createElement('p');
+        el.textContent = 'link' + i;
+        P.appendChild(el);
+    }
 </script>
 
 <script id="backbone">
