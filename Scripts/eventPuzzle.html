@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>子元素不要触发父元素事件</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <style>
+        div {
+            margin-top: 30px;
+        }
+
+        .parent {
+            width: 200px;
+            height: 200px;
+            background: #099fde;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: #435163;
+        }
+    </style>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/underscore/underscore-min.js"></script>
+    <script src="../bower_components/backbone/backbone-min.js"></script>
+</head>
+<body>
+<div id="p1" class="parent">
+    <div id="c1" class="child"></div>
+</div>
+<div id="p2" class="parent">
+    <div id="c2" class="child"></div>
+</div>
+
+<script id="origin">
+    // 原生的事件机制，是不会在捕获阶段触发事件处理程序的。
+    var P = document.getElementById('p1');
+    var C = document.getElementById('c1');
+
+    P.addEventListener('click', function (e) {
+        if (e.target !== this) {
+            return false;
+        }
+        alert('I am father');
+    }, true);
+
+    C.addEventListener('click', function (e) {
+        alert('I am child');
+        e.stopPropagation();
+    });
+</script>
+
+<script id="backbone">
+    var view = Backbone.View.extend({
+        el: 'body',
+        events: {
+            'click #p2': 'alertParent',
+            'click #c2': 'alertChild'
+        },
+
+        alertParent: function () {
+            alert('Father2');
+        },
+
+        alertChild: function (e) {
+            alert('Child2');
+            e.stopPropagation();
+        }
+    });
+    new view();
+</script>
+</body>
+</html>
