@@ -1,55 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>Backbone * TODO</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link rel="stylesheet" href="../common_styles/app.css"/>
+    <link rel="stylesheet" href="../common_styles/app.css" />
 </head>
+
 <body>
-<!--界面框架-->
-<section id="myApp">
-    <header class="header">
-        <h1>待办清单</h1>
-        <input type="text" class="new-todo" placeholder=" 您需要做点什么？" autofocus/>
-    </header>
-    <section class="main">
-        <input type="checkbox" id="toggle-all" class="toggle-all"/>
-        <label for="toggle-all">全部完成</label>
-        <ul class="todo-list"></ul>
+    <!--界面框架-->
+    <section id="myApp">
+        <header class="header">
+            <h1>待办清单</h1>
+            <input type="text" class="new-todo" placeholder=" 您需要做点什么？" autofocus/>
+        </header>
+        <section class="main">
+            <input type="checkbox" id="toggle-all" class="toggle-all" />
+            <label for="toggle-all">全部完成</label>
+            <ul class="todo-list"></ul>
+        </section>
+        <footer class="footer"></footer>
     </section>
-    <footer class="footer"></footer>
-</section>
 
-<!--demo 介绍-->
-<div class="info">
-    <p> 这是 <a href="http://www.github.com/hywilliam">{'wyh': 'william'}</a>参考学习
-        <a href="http://www.todomvc.com">todoMVC</a> 的练习</p>
-</div>
-
-<!--模板-->
-<script type="text/template" id="item-tpl">
-    <div>
-        <input type="checkbox" class="toggle"/>
-        <label><%= title %></label>
-        <button class="destroy"></button>
+    <!--demo 介绍-->
+    <div class="info">
+        <p>这是<a href="http://www.github.com/hywilliam">{'wyh': 'william'}</a> 参考学习
+            <a href="http://www.todomvc.com">todoMVC</a>的练习</p>
     </div>
-</script>
-<script type="text/template" id="stats-tpl"></script>
 
-<!--外部依赖-->
-<script src="../common_modules/jquery.min.js"></script>
-<script src="../common_modules/underscore-min.js"></script>
-<script src="../common_modules/backbone-min.js"></script>
-<script src="../common_modules/backbone.localStorage-min.js"></script>
+    <!--模板-->
+    <script type="text/template" id="item-tpl">
+        <div>
+            <input type="checkbox" class="toggle" />
+            <label>
+                <%=title%>
+            </label>
+            <button class="destroy"></button>
+        </div>
+    </script>
+    <script type="text/template" id="stats-tpl"></script>
 
-<!--业务逻辑 MVC -->
-<script src="Model/todo.js"></script>
-<script src="Collection/todos.js"></script>
-<script src="View/item-view.js"></script>
-<script src="View/app-view.js"></script>
+    <!--外部依赖-->
+    <script src="../common_modules/jquery.min.js"></script>
+    <script src="../common_modules/underscore-min.js"></script>
+    <script src="../common_modules/backbone-min.js"></script>
+    <script src="../common_modules/backbone.localStorage-min.js"></script>
 
-<!--入口-->
-<script src="app.js"></script>
+    <!--业务逻辑 MVC -->
+    <!-- <script src="Model/todo.js"></script>
+    <script src="Collection/todos.js"></script>
+    <script src="View/item-view.js"></script>
+    <script src="View/app-view.js"></script> -->
+
+    <!--入口-->
+    <!-- <script src="app.js"></script> -->
+    <script src="all_in_one.js"></script>
 </body>
+
 </html>
