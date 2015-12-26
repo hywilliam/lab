@@ -1,16 +1,16 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
+* Sample React Native App
+* https://github.com/facebook/react-native
+*/
 'use strict';
 
 var React = require('react-native');
 var {
-        AppRegistry,
-        StyleSheet,
-        Text,
-        View,
-        } = React;
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+} = React;
 
 var helloworld = React.createClass({
     render: function () {
