@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <script src="../bower_components/angular/angular.js"></script>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../bower_components/angular/angular.js"></script>
 </head>
+
 <body ng-app="myTest" ng-controller="test">
-    <div ng-show="value" ng-init="value=true;">
-        <p>show area</p>
-    </div>
-    <div>
-        <button ng-click="value=false" ng-mouseleave="value=true;">okey</button>
-    </div>
-    <button ng-click="closeShow()">{{message}}</button>
-    <script type="text/javascript">
+	<div ng-click="value=true">
+		<div ng-show="value" ng-init="value=true;">
+			<p>show area</p>
+		</div>
+		<div>
+			<button ng-click="value=false" ng-mouseleave="value=true;">okey</button>
+		</div>
+		<button ng-click="closeShow()">{{message}}</button>
+	</div>
+	<!-- <script type="text/javascript">
     angular.module('myTest', [])
         .controller("test", function ($scope) {
             $scope.message = "Hello World!";
@@ -23,6 +27,8 @@
                     console.log($scope.value);
             };
         });
-    </script>
+    </script> -->
+	<script src="play.js"></script>
 </body>
+
 </html>
